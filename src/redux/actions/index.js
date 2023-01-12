@@ -10,14 +10,14 @@ import {
   GET_PHOTOS_FAILED,
 } from "../constants/index";
 
-import services from '../../services'
+import api from '../../api'
 
 export const getUsers = () => {
     return (dispatch) => {
         dispatch({
             type: GET_USERS_START,
         })
-        services.getUsers
+        api.getUsers
             .then(payload => dispatch({
                 type: GET_USERS_SUCCESS,
                 payload
@@ -34,7 +34,7 @@ export const getPosts = () => {
         dispatch({
             type: GET_POSTS_START,
         })
-        services.getPosts
+        api.getPosts
             .then(payload => dispatch({
                 type: GET_POSTS_SUCCESS,
                 payload
@@ -51,7 +51,7 @@ export const getPhotos = () => {
         dispatch({
             type: GET_PHOTOS_START,
         })
-        services.getPhotos
+        api.getPhotos
             .then(payload => dispatch({
                 type: GET_PHOTOS_SUCCESS,
                 payload
