@@ -8,16 +8,15 @@ import {
   GET_PHOTOS_START,
   GET_PHOTOS_SUCCESS,
   GET_PHOTOS_FAILED,
+  SEARCH_USER
 } from "../constants/index";
 
 import api from '../../api'
 
 export const getUsers = () => {
     return (dispatch) => {
-        dispatch({
-            type: GET_USERS_START,
-        })
-        api.getUsers
+        dispatch({type: GET_USERS_START})
+        api.fetchUsers()
             .then(payload => dispatch({
                 type: GET_USERS_SUCCESS,
                 payload
@@ -34,7 +33,7 @@ export const getPosts = () => {
         dispatch({
             type: GET_POSTS_START,
         })
-        api.getPosts
+        api.fetchPosts()
             .then(payload => dispatch({
                 type: GET_POSTS_SUCCESS,
                 payload
@@ -51,7 +50,7 @@ export const getPhotos = () => {
         dispatch({
             type: GET_PHOTOS_START,
         })
-        api.getPhotos
+        api.fetchPhotos()
             .then(payload => dispatch({
                 type: GET_PHOTOS_SUCCESS,
                 payload
@@ -60,5 +59,12 @@ export const getPhotos = () => {
                 type: GET_PHOTOS_FAILED,
                 payload: err.message
             }))
-    }
+    }    
 };
+
+export const searchUser = (payload) => {
+    return {
+        type: SEARCH_USER,
+        payload
+    }
+}

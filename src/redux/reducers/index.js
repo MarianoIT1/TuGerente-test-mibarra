@@ -8,6 +8,7 @@ import {
     GET_PHOTOS_START,
     GET_PHOTOS_SUCCESS,
     GET_PHOTOS_FAILED,
+    SEARCH_USER,
   } from "../constants/index";
 
 const initialState = {
@@ -25,11 +26,12 @@ const initialState = {
         data: [],
         isFetchting: false,
         isError: false
-    }
+    },
+    searchResults: []
 }
 
 export default function reducer(state = initialState, action) {
-    switch(action){
+    switch(action.type){
         case GET_USERS_START:
             return {
                 ...state,
@@ -117,5 +119,12 @@ export default function reducer(state = initialState, action) {
                     isError: true
                 }
             }
+        case SEARCH_USER: 
+            console.log(action.payload)
+            return {
+                ...state,
+                searchResults: state.users.data.filter(user => user.email.toLowerCase().includes(action.payload))
+            }
+        default: return state
     }
 }
