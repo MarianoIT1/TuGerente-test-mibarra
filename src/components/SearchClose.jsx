@@ -1,6 +1,7 @@
 import { StyleSheet, Text, View, TouchableOpacity } from 'react-native'
 import { useSelector } from 'react-redux'
 
+
 const SearchClose = ({ setSearchIsOpen }) => {
 
   const users = useSelector(state => state.users)

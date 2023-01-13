@@ -1,6 +1,7 @@
 import { StyleSheet, Text, View, Platform, StatusBar, Dimensions } from 'react-native'
 import { ImageHeaderScrollView, TriggeringView } from 'react-native-image-header-scroll-view';
 import {useEffect, useState} from 'react'
+
 const MIN_HEIGHT = Platform.OS === 'ios' ? 90 : 55 + StatusBar.currentHeight 
 const MAX_HEIGHT = 300
 const screenWidth = Dimensions.get('window').width;
