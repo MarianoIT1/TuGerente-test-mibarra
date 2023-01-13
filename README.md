@@ -26,24 +26,24 @@ En la parte superior, la imagen (el tamaño original, NO el thumbnail) del post.
 ## Resultado
 
 <p float="left">
-<img src="https://user-images.githubusercontent.com/74881239/212414011-1bc15410-5e2a-4aac-b926-be7d4cc76e6c.png" alt="Home" style="width:480px;"/>
-<img src="https://user-images.githubusercontent.com/74881239/212414639-ab19aa40-1d29-4dc7-b616-a5e5cf9a0cc3.png" alt="Home" style="width:480px;"/>
-<img src="https://user-images.githubusercontent.com/74881239/212414644-a3cf8213-dcf8-4975-b7a9-1d6e359ff303.png" alt="Home" style="width:480px;"/>
-<img src="https://user-images.githubusercontent.com/74881239/212414648-b59030f4-2e45-45ee-9cc9-2b876bd53dba.png" alt="Home" style="width:480px;"/>
+<img src="https://user-images.githubusercontent.com/74881239/212414011-1bc15410-5e2a-4aac-b926-be7d4cc76e6c.png" alt="Home" style="width:45%;"/>
+<img src="https://user-images.githubusercontent.com/74881239/212414639-ab19aa40-1d29-4dc7-b616-a5e5cf9a0cc3.png" alt="Home" style="width:45%;"/>
+<img src="https://user-images.githubusercontent.com/74881239/212414644-a3cf8213-dcf8-4975-b7a9-1d6e359ff303.png" alt="Home" style="width:45%;"/>
+<img src="https://user-images.githubusercontent.com/74881239/212414648-b59030f4-2e45-45ee-9cc9-2b876bd53dba.png" alt="Home" style="width:45%;"/>
 </p>
 
 
 ### User
 
 
-<img src="https://user-images.githubusercontent.com/74881239/212414651-55e870e9-b987-41c1-a7f3-46617182317c.png" alt="Home" style="width:480px;"/>
+<img src="https://user-images.githubusercontent.com/74881239/212414651-55e870e9-b987-41c1-a7f3-46617182317c.png" alt="Home" style="width:45%;"/>
 
 
 ### Post
 
 
 <p float="left">
-<img src="https://user-images.githubusercontent.com/74881239/212414659-7f49299a-a987-4d44-a7c7-a21f10ae7eb8.png" alt="Home" style="width:480px;"/>
-<img src="https://user-images.githubusercontent.com/74881239/212414663-1ea5af74-001c-4db2-9c4a-dab2830be372.png" alt="Home" style="width:480px;"/>
+<img src="https://user-images.githubusercontent.com/74881239/212414659-7f49299a-a987-4d44-a7c7-a21f10ae7eb8.png" alt="Home" style="width:45%;"/>
+<img src="https://user-images.githubusercontent.com/74881239/212414663-1ea5af74-001c-4db2-9c4a-dab2830be372.png" alt="Home" style="width:45%;"/>
 </p>
 
