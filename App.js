@@ -36,14 +36,29 @@ export default function App() {
   return (
     <Provider store={store}>
       <NavigationContainer>
-        <Stack.Navigator initialRouteName="Home">
+        <Stack.Navigator initialRouteName="Home" >
           <Stack.Screen name="Home" component={Home} options={{headerShown: false}} />
-          <Stack.Screen name="User" component={User} />
+          <Stack.Screen 
+            name="User"
+            component={User} 
+            options={{
+              headerTitleStyle: {
+                fontFamily: 'Lato-Bold',
+                color: '#eee'
+              },
+              headerStyle: {
+                backgroundColor: '#282828',
+              },
+              headerTintColor: '#eee'
+            }}
+          />
+                                                          
           <Stack.Screen name="Post" component={Post} options={{
             headerBackTitleVisible: false,
             headerTransparent: true,
             headerTintColor: '#fff',
-            headerTitleStyle:{color: '#fff0'}
+            headerTitleStyle:{color: '#fff0', fontFamily: 'Lato-Black'}
+            
             }} />
         </Stack.Navigator>
       </NavigationContainer>

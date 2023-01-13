@@ -6,10 +6,11 @@ const screenWidth = Dimensions.get('window').width;
 const PostCard = ({post, navigation}) => {
   return (
     <TouchableNativeFeedback 
+      over
       onPress={() => navigation.navigate('Post', {post})}
       background={
         Platform.OS === 'android'
-          ? TouchableNativeFeedback.SelectableBackground()
+          ? TouchableNativeFeedback.Ripple('#03dac519')
           : undefined
       }
     >
@@ -29,7 +30,7 @@ const styles = StyleSheet.create({
   cardWrapper: {
     height: 100,
     flexDirection: 'row',
-    backgroundColor: '#fcfcfc',
+    backgroundColor: '#242424',
     marginHorizontal: '1%',
     width: '98%',
     borderRadius: 10,
@@ -48,8 +49,7 @@ const styles = StyleSheet.create({
   },
   title: {
     fontFamily: 'Lato-Bold',
-    textTransform: 'capitalize',
     fontSize: 17,
-    color: '#444'
+    color: '#eee'
   }
 })

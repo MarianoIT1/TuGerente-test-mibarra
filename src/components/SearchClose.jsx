@@ -10,15 +10,16 @@ const SearchClose = ({ setSearchIsOpen }) => {
   return (
     <View style={styles.screen}>
 
-      <Text>
-        MIBARRA TEST
-      </Text>
+      <View style={styles.logoWrapper}>
+        <Text style={styles.logoHead}>Native Test</Text>
+        <Text style={styles.logoSub}>by MARIANO IBARRA</Text>
+      </View>
 
       <View style={{borderRadius: 8, overflow: 'hidden', width: '90%'}}>
         <TouchableHighlight onPress={() => setSearchIsOpen(true)}
         >
           <View style={styles.searchBarOpener}>
-            <IconF style={styles.icon} name={'search'} color={"#888"} size={16} />
+            <IconF style={styles.icon} name={'search'} color={"#999"} size={16} />
             <Text style={styles.searchBarOpenerText}>{users.data && users.data.length > 0 ? 'Enter a email' : 'Loading..'}</Text>
           </View>
         </TouchableHighlight>
@@ -31,14 +32,15 @@ const styles = StyleSheet.create({
   screen: { 
     flex: 1, 
     alignItems: 'center', 
-    justifyContent: 'center' 
+    justifyContent: 'center',
+    backgroundColor: '#121212'
   },
   searchBarOpener: {
     flexDirection: 'row',
     alignItems: 'center',
     paddingHorizontal: 12,
     height: 36,
-    backgroundColor: '#ddd'
+    backgroundColor: '#444',
   },
   searchBarOpenerText: {
     fontFamily: 'Lato-Regular',
@@ -46,7 +48,25 @@ const styles = StyleSheet.create({
     height: '100%',
     textAlignVertical: 'center',
     marginLeft: 12,
-    color: '#666'
+    color: '#999'
+  },
+  logoHead: {
+    fontFamily: 'Lato-Black',
+    textAlign: 'center',
+    fontSize: 42,
+    color: '#fff',
+  },
+  logoSub: {
+    fontFamily: 'Lato-Regular',
+    textAlign: 'center',
+    letterSpacing: .8,
+    fontSize: 13,
+    color: '#3cffd0',
+    marginTop: 4
+  },
+  logoWrapper: {
+    marginTop: -80,
+    marginBottom: 30
   }
 })
 

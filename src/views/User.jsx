@@ -3,7 +3,6 @@ import { StyleSheet, Text, View, FlatList } from 'react-native'
 import { useSelector } from 'react-redux'
 import api from '../api'
 import PostCard from '../components/PostCard'
-import MasonryList from '@react-native-seoul/masonry-list';
 
 const User = ({ route, navigation }) => {
 
@@ -23,14 +22,14 @@ const User = ({ route, navigation }) => {
     })
   })
 
-  if(posts.loading) return <Text>Loading..</Text>
+  if(posts.loading) return <View style={styles.screen}><Text>Loading..</Text></View>
   if(posts.error) return <Text>{`Error: ${posts.error}`}</Text>
 
   return (
     <View style={styles.screen}>
       <FlatList
         data={posts.data}
-        ListHeaderComponent={<Text style={styles.subtitle}>POSTS </Text>}q
+        ListHeaderComponent={<Text style={styles.subtitle}>POSTS </Text>}
         ListEmptyComponent={<View style={styles.emptyContainer}><Text style={styles.empty}> Nothing yet.. </Text></View>}
         renderItem={({item}) => <PostCard navigation={navigation} post={item}/> }
       />
@@ -44,7 +43,8 @@ const styles = StyleSheet.create({
   screen: { 
     flex: 1, 
     alignItems: 'center', 
-    justifyContent: 'center'
+    justifyContent: 'center',
+    backgroundColor: '#121212'
   },
   subtitle: {
     textAlign: 'left',
@@ -52,7 +52,8 @@ const styles = StyleSheet.create({
     marginTop: 14,
     marginBottom: 6,
     fontSize: 14,
-    fontFamily: 'Lato-Bold'
+    fontFamily: 'Lato-Bold',
+    color: '#3cffd0cc'
   },
   emptyContainer: {
     flex: 1,

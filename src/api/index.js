@@ -40,6 +40,7 @@ export default {
             try {
               const photo = await axios(`${API}/photos/${post.id}`)
               .then(res => res.data)
+              post.title = post.title[0].toUpperCase() + post.title.slice(1)
               post.thumbnail = `http://placehold.jp/${photo.thumbnailUrl.slice(-6)}/ffffff/150x150.png`
               post.image = `http://placehold.jp/${photo.thumbnailUrl.slice(-6)}/ffffff/600x600.png`
               return post

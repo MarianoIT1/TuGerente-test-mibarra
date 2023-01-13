@@ -122,7 +122,7 @@ const UserCard = ({user, search , navigation}) => {
       onPress={handlePress}
       background={
         Platform.OS === 'android'
-          ? TouchableNativeFeedback.SelectableBackground()
+          ? TouchableNativeFeedback.Ripple('#03dac514')
           : undefined
       }
     >
@@ -134,7 +134,7 @@ const UserCard = ({user, search , navigation}) => {
           <Text style={styles.name}>{user.name}</Text>
           <Highlighter 
             style={styles.email}
-            highlightStyle={{color: 'red'}}
+            highlightStyle={styles.accentEmail}
             searchWords={[search]}
             textToHighlight={user.email}
           />
@@ -176,15 +176,17 @@ const styles = StyleSheet.create({
   },
   name: {
     fontSize: 18,
-    fontFamily: 'Lato-Regular'
+    fontFamily: 'Lato-Regular',
+    color: '#eee'
   },
   email: {
     fontSize: 13,
     color: '#555',
     marginTop: 3,
-    fontFamily: 'Lato-Regular'
+    fontFamily: 'Lato-Regular',
+    color: '#aaa'
   },
   accentEmail:{
-    color: 'red'
+    color: '#3cffd0'
   }
 })

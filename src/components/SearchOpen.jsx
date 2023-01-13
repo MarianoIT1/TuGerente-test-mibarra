@@ -27,10 +27,10 @@ const SearchOpen = ({setSearchIsOpen, navigation}) => {
 
     return (
       <View style={{...styles.screen}}>
-        <StatusBar barStyle={'dark-content'} translucent={false} />
+        <StatusBar barStyle={'light-content'} backgroundColor={'#121212'} translucent={false} />
         <View style={styles.barWrapper}>
           <TouchableOpacity style={styles.iconCont} onPress={() => setSearchIsOpen(false)}>
-            <Icon style={styles.icon} name={"arrow-back"} color={"#000"} size={23}/>
+            <Icon style={styles.icon} name={"arrow-back"} color={"#fff"} size={23}/>
           </TouchableOpacity>
           <View style={styles.searchBar}>
             <IconF style={styles.icon} name={'search'} color={"#888"} size={16} />
@@ -45,6 +45,7 @@ const SearchOpen = ({setSearchIsOpen, navigation}) => {
               autoCorrect={false}
               blurOnSubmit={true}
               placeholder={users.data.length > 0 ? 'Enter a email' : 'Loading..'}
+              placeholderTextColor="#999" 
             />
           </View>
         </View>
@@ -77,7 +78,8 @@ const styles = StyleSheet.create({
         flex: 1, 
         alignItems: 'center', 
         justifyContent: 'center',
-        width: '100%' 
+        width: '100%',
+        backgroundColor: '#121212'
       },
       noResults: {
         flex: 1,
@@ -92,7 +94,7 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
         height: 55,
         width: '90%',
-        borderBottomColor: '#ddd',
+        borderBottomColor: '#444',
         borderBottomWidth: 1,
         marginBottom: 6,
         alignItems: 'center'
@@ -103,7 +105,7 @@ const styles = StyleSheet.create({
         height: 36,
         padding: 10,
         alignItems: 'center',
-        backgroundColor: '#ddd',
+        backgroundColor: '#444',
         borderRadius: 8,
         fontFamily: 'Montserrat-Medium'
       },
@@ -126,12 +128,14 @@ const styles = StyleSheet.create({
       },
       input: {
         marginLeft: 12,
-        fontFamily: 'Lato-Regular',
+        color: '#eee',
+        fontFamily: 'Lato-Regular'
       },
       msg: {
         fontFamily: 'Lato-Regular',
         textAlign: 'center',
         width: '100%',
+        color: '#aaa',
         marginBottom: 28
       },
       count: {
@@ -140,8 +144,9 @@ const styles = StyleSheet.create({
         paddingRight: '5%',
         marginBottom: 6, 
         fontFamily: 'Lato-Regular',
-        color: '#555',
+        color: '#3cffd0cc',
         lineHeight: 24,
-        fontSize: 13
+        fontSize: 13,
+
       }
 })
