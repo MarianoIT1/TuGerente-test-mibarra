@@ -1,4 +1,4 @@
-import { ScrollView, StyleSheet, Text, TouchableOpacity, View, StatusBar } from 'react-native'
+import { ScrollView, StyleSheet, Text, TouchableOpacity, View, StatusBar, TouchableWithoutFeedback, Keyboard, Dimensions } from 'react-native'
 import {useState, useEffect} from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { TextInput } from 'react-native-gesture-handler'
@@ -48,18 +48,27 @@ const SearchOpen = ({setSearchIsOpen, navigation}) => {
             />
           </View>
         </View>
-        <ScrollView  style={{width: '100%', height: '100%'}}>
-          {
-            searchResults.length > 0 && 
-            searchResults.map(elem => 
-              <UserCard key={elem.id} user={elem} search={searchInput} navigation={navigation} />
-            )
+        { 
+          searchInput.length > 0
+            ? searchResults.length > 0
+              ? <View style={{flex: 1, width: '100%', height: '100%'}}> 
+                  <Text style={styles.count}>{`${searchResults.length} results`}</Text>
+                  <ScrollView keyboardShouldPersistTaps={'always'} style={{width: '100%', height: '100%'}}>
+                    {searchResults.map(elem => 
+                      <UserCard key={elem.id} user={elem} search={searchInput} navigation={navigation} />
+                    )}
+                  </ScrollView>
+                </View>
+              : <View style={styles.noResults}>
+                  <Text style={styles.msg}>No results :(</Text>
+                </View>
+            : <View style={styles.noResults}>
+                <Text style={styles.msg}>Try searching for users by email..</Text>
+              </View>
           }
-        </ScrollView>
       </View>
     )
   }
-
 
 export default SearchOpen
 
@@ -70,13 +79,22 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
         width: '100%' 
       },
+      noResults: {
+        flex: 1,
+        width: '100%',
+        flexDirection: 'row',
+        alignItems: 'center',
+        paddingHorizontal: 14,
+        borderBottomColor: '#ccc',
+        borderBottomWidth: .5
+      },
       barWrapper: {
         flexDirection: 'row',
         height: 55,
         width: '90%',
         borderBottomColor: '#ddd',
         borderBottomWidth: 1,
-        marginBottom: 12,
+        marginBottom: 6,
         alignItems: 'center'
       },
       searchBar: {
@@ -86,7 +104,8 @@ const styles = StyleSheet.create({
         padding: 10,
         alignItems: 'center',
         backgroundColor: '#ddd',
-        borderRadius: 8
+        borderRadius: 8,
+        fontFamily: 'Montserrat-Medium'
       },
       userCard: {
         width: '100%',
@@ -106,6 +125,23 @@ const styles = StyleSheet.create({
         height: 55,
       },
       input: {
-        marginLeft: 12
+        marginLeft: 12,
+        fontFamily: 'Lato-Regular',
+      },
+      msg: {
+        fontFamily: 'Lato-Regular',
+        textAlign: 'center',
+        width: '100%',
+        marginBottom: 28
+      },
+      count: {
+        width: '100%',
+        textAlign: 'right',
+        paddingRight: '5%',
+        marginBottom: 6, 
+        fontFamily: 'Lato-Regular',
+        color: '#555',
+        lineHeight: 24,
+        fontSize: 13
       }
 })

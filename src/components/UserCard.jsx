@@ -1,4 +1,4 @@
-import { StyleSheet, Text, TouchableHighlight, TouchableNativeFeedback, TouchableOpacity, View } from 'react-native'
+import { Keyboard, StyleSheet, Text, TouchableHighlight, TouchableNativeFeedback, TouchableOpacity, View } from 'react-native'
 import Highlighter from '@sanar/react-native-highlight-text';
 
 const UserCard = ({user, search , navigation}) => {
@@ -113,12 +113,12 @@ const UserCard = ({user, search , navigation}) => {
 ]
   
   const handlePress = () => {
+    Keyboard.dismiss()
     navigation.navigate('User', {id: user.id})
   }
   
   return (
-    <TouchableNativeFeedback 
-      
+    <TouchableNativeFeedback
       onPress={handlePress}
       background={
         Platform.OS === 'android'
@@ -132,14 +132,8 @@ const UserCard = ({user, search , navigation}) => {
         </View>
         <View style={styles.textsWrapper}>
           <Text style={styles.name}>{user.name}</Text>
-          {/* <Text style={styles.email}>
-            {user.email[0]}
-            <Text style={styles.accentEmail} >
-              {search}
-            </Text>
-            {user.email[1]}
-          </Text> */}
           <Highlighter 
+            style={styles.email}
             highlightStyle={{color: 'red'}}
             searchWords={[search]}
             textToHighlight={user.email}
@@ -169,23 +163,26 @@ const styles = StyleSheet.create({
     height: 48,
     backgroundColor: 'violet',
     justifyContent: 'center',
-    alignItems: 'center'
+    alignItems: 'center',
   },
   initial: {
-    fontSize: 20,
-    color: 'white'
+    fontSize: 22,
+    color: '#ffffffc9',
+    fontFamily: 'Lato-Regular'
   },
   textsWrapper: {
     marginLeft: 16,
     marginBottom: 4
   },
   name: {
-    fontSize: 18
+    fontSize: 18,
+    fontFamily: 'Lato-Regular'
   },
   email: {
-    fontSize: 14,
+    fontSize: 13,
     color: '#555',
-    marginTop: 1
+    marginTop: 3,
+    fontFamily: 'Lato-Regular'
   },
   accentEmail:{
     color: 'red'

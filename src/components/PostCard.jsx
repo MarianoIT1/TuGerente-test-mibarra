@@ -15,7 +15,7 @@ const PostCard = ({post, navigation}) => {
     >
       <View style={styles.cardWrapper} key={post.id}>
           <Image style={styles.image} resizeMode='cover' source={{uri: post.thumbnail}} />
-          <View style={styles.footer}>
+          <View style={styles.titleWrapper}>
             <Text numberOfLines={2} style={styles.title}>{post.title}</Text>
           </View>
       </View>
@@ -41,13 +41,15 @@ const styles = StyleSheet.create({
     width: 100,
     height: '100%',
   },
-  footer: {
+  titleWrapper: {
     width: screenWidth * 0.95 - 100,
     justifyContent: 'center',
     paddingHorizontal: '5%'
   },
   title: {
+    fontFamily: 'Lato-Bold',
     textTransform: 'capitalize',
-    fontSize: 16
+    fontSize: 17,
+    color: '#444'
   }
 })

@@ -23,17 +23,14 @@ const User = ({ route, navigation }) => {
     })
   })
 
-
   if(posts.loading) return <Text>Loading..</Text>
   if(posts.error) return <Text>{`Error: ${posts.error}`}</Text>
 
   return (
     <View style={styles.screen}>
-      
-      <FlatList 
-        // contentContainerStyle = {{padding: '2%'}}
+      <FlatList
         data={posts.data}
-        ListHeaderComponent={<Text style={styles.subtitle}>POSTS </Text>}
+        ListHeaderComponent={<Text style={styles.subtitle}>POSTS </Text>}q
         ListEmptyComponent={<View style={styles.emptyContainer}><Text style={styles.empty}> Nothing yet.. </Text></View>}
         renderItem={({item}) => <PostCard navigation={navigation} post={item}/> }
       />
@@ -54,8 +51,8 @@ const styles = StyleSheet.create({
     paddingLeft: 14,
     marginTop: 14,
     marginBottom: 6,
-    fontSize: 16,
-    fontWeight: '600',
+    fontSize: 14,
+    fontFamily: 'Lato-Bold'
   },
   emptyContainer: {
     flex: 1,
@@ -65,6 +62,5 @@ const styles = StyleSheet.create({
   },
   empty: {
     textAlign: 'center'
-  }
-  
+  }  
 })

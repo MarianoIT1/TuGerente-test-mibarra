@@ -69,12 +69,17 @@ const styles = StyleSheet.create({
     justifyContent: 'center' 
   },
   title: {
+    textTransform: 'capitalize',
     fontSize: 40,
-    marginBottom: 24
+    marginBottom: 24,
+    fontFamily: 'Lato-Black'
   },
   body: {
     borderTopColor: '#ccc',
+    lineHeight: 28,
     borderTopWidth: .5,
-    paddingTop: 24
+    fontSize: 16,
+    paddingTop: 24,
+    fontFamily: 'Merriweather-Regular'
   }
 })

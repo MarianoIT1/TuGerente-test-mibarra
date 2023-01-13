@@ -1,5 +1,6 @@
-import { StyleSheet, Text, View, TouchableOpacity } from 'react-native'
+import { StyleSheet, Text, View, TouchableOpacity, TouchableHighlight } from 'react-native'
 import { useSelector } from 'react-redux'
+import IconF from 'react-native-vector-icons/Feather'
 
 
 const SearchClose = ({ setSearchIsOpen }) => {
@@ -8,12 +9,20 @@ const SearchClose = ({ setSearchIsOpen }) => {
 
   return (
     <View style={styles.screen}>
-      <TouchableOpacity 
-        style={styles.searchBarOpener}
-        onPress={() => setSearchIsOpen(true)}
+
+      <Text>
+        MIBARRA TEST
+      </Text>
+
+      <View style={{borderRadius: 8, overflow: 'hidden', width: '90%'}}>
+        <TouchableHighlight onPress={() => setSearchIsOpen(true)}
         >
-        <Text style={styles.searchBarOpenerText}>{users.data && users.data.length > 0 ? 'Enter a email' : 'Loading..'}</Text>
-      </TouchableOpacity>
+          <View style={styles.searchBarOpener}>
+            <IconF style={styles.icon} name={'search'} color={"#888"} size={16} />
+            <Text style={styles.searchBarOpenerText}>{users.data && users.data.length > 0 ? 'Enter a email' : 'Loading..'}</Text>
+          </View>
+        </TouchableHighlight>
+      </View>
     </View>
   )
 }
@@ -25,17 +34,19 @@ const styles = StyleSheet.create({
     justifyContent: 'center' 
   },
   searchBarOpener: {
+    flexDirection: 'row',
     alignItems: 'center',
-    width: '90%',
-    height: 40,
-    borderRadius: 50,
-    backgroundColor: '#CCC',
-    paddingHorizontal: 12
+    paddingHorizontal: 12,
+    height: 36,
+    backgroundColor: '#ddd'
   },
   searchBarOpenerText: {
+    fontFamily: 'Lato-Regular',
     width: '100%',
     height: '100%',
-    textAlignVertical: 'center'
+    textAlignVertical: 'center',
+    marginLeft: 12,
+    color: '#666'
   }
 })
 
