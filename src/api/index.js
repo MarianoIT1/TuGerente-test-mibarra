@@ -9,7 +9,7 @@ export default {
                   .map(user => {
                     return {
                       ...user, 
-                      email: user.email.toLowerCase()
+                      email: user.email.toLowerCase(),
                     }
                   })
                   .sort(function (a, b) {
@@ -21,6 +21,7 @@ export default {
                     }
                     return 0;
                   })
+    console.log(users)
     return users
   },
   fetchPosts: async (id) => {
@@ -39,8 +40,8 @@ export default {
             try {
               const photo = await axios(`${API}/photos/${post.id}`)
               .then(res => res.data)
-              post.thumbnail = `http://placehold.jp/${photo.thumbnailUrl.slice(-6)}/ffffff/150.png`
-              post.image = `http://placehold.jp/${photo.thumbnailUrl.slice(-6)}/ffffff/600.png`
+              post.thumbnail = `http://placehold.jp/${photo.thumbnailUrl.slice(-6)}/ffffff/150x150.png`
+              post.image = `http://placehold.jp/${photo.thumbnailUrl.slice(-6)}/ffffff/600x600.png`
               return post
             } catch (error) {
               console.log(error)

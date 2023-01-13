@@ -1,9 +1,14 @@
-import { StyleSheet, Text, View } from 'react-native'
+import { StyleSheet, Text, View, Image } from 'react-native'
 
-const Post = () => {
+const Post = ({ route, navigation }) => {
+
+  const { post } = route.params
+
   return (
     <View style={styles.screen}>
-      <Text>Post screen</Text>
+      <Image style={styles.image} resizeMode='cover' source={{uri: post.image}} />
+      <Text>{post.title}</Text>
+      <Text>{post.body}</Text>
     </View>
   )
 }
@@ -14,5 +19,10 @@ const styles = StyleSheet.create({
   screen: { 
     flex: 1, 
     alignItems: 'center', 
-    justifyContent: 'center' }
+    justifyContent: 'flex-start' 
+  },
+  image: {
+    width: '100%',
+    height: 150
+  }
 })

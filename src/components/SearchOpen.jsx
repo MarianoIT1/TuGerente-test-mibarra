@@ -1,5 +1,5 @@
 import { ScrollView, StyleSheet, Text, TouchableOpacity, View } from 'react-native'
-import React from 'react'
+import {useState} from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { TextInput } from 'react-native-gesture-handler'
 import UserCard from './UserCard'
@@ -11,8 +11,10 @@ const SearchOpen = ({setSearchIsOpen, navigation}) => {
     const dispatch = useDispatch()
     const searchResults = useSelector(state => state.searchResults)
     const users = useSelector(state => state.users)
+    const [searchInput, setSearchInput] = useState('')
 
     const handleChanges = (value) => {
+      setSearchInput(value)
       dispatch(searchUser(value.toLowerCase()))
     }
 
@@ -25,6 +27,7 @@ const SearchOpen = ({setSearchIsOpen, navigation}) => {
           </TouchableOpacity>
           <TextInput
             style={styles.input}
+            value={searchInput}
             onChangeText={handleChanges}
             keyboardType='email-address'
             returnKeyType='search'
@@ -39,7 +42,7 @@ const SearchOpen = ({setSearchIsOpen, navigation}) => {
           {
             searchResults.length > 0 && 
             searchResults.map(elem => 
-              <UserCard key={elem.id} name={elem.name} email={elem.email} id={elem.id} navigation={navigation} />
+              <UserCard key={elem.id} user={elem} search={searchInput} navigation={navigation} />
             )
           }
         </ScrollView>

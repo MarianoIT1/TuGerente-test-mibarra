@@ -30,10 +30,8 @@ const User = ({ route, navigation }) => {
   return (
     <View style={styles.screen}>
       
-      <MasonryList 
-        columnWrapperStyle={{justifyContent: 'space-between'}}
-        contentContainerStyle = {{padding: '2%', width: '100%'}}
-        numColumns={2}
+      <FlatList 
+        // contentContainerStyle = {{padding: '2%'}}
         data={posts.data}
         ListHeaderComponent={<Text style={styles.subtitle}>POSTS </Text>}
         ListEmptyComponent={<View style={styles.emptyContainer}><Text style={styles.empty}> Nothing yet.. </Text></View>}
@@ -54,8 +52,8 @@ const styles = StyleSheet.create({
   subtitle: {
     textAlign: 'left',
     paddingLeft: 14,
-    marginTop: 16,
-    marginBottom: 8,
+    marginTop: 14,
+    marginBottom: 6,
     fontSize: 16,
     fontWeight: '600',
   },

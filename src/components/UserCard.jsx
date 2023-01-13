@@ -1,8 +1,9 @@
 import { StyleSheet, Text, TouchableHighlight, TouchableNativeFeedback, TouchableOpacity, View } from 'react-native'
+import Highlighter from '@sanar/react-native-highlight-text';
 
-const UserCard = ({name, email, id, navigation}) => {
+const UserCard = ({user, search , navigation}) => {
 
-  const initial = name[0].toString().toUpperCase()
+  const initial = user.name[0].toString().toUpperCase()
 
   const avatarColors = [
     {
@@ -112,7 +113,7 @@ const UserCard = ({name, email, id, navigation}) => {
 ]
   
   const handlePress = () => {
-    navigation.navigate('User', {id})
+    navigation.navigate('User', {id: user.id})
   }
   
   return (
@@ -130,8 +131,19 @@ const UserCard = ({name, email, id, navigation}) => {
           <Text style={styles.initial}>{initial}</Text>
         </View>
         <View style={styles.textsWrapper}>
-          <Text style={styles.name}>{name}</Text>
-          <Text style={styles.email}>{email}</Text>
+          <Text style={styles.name}>{user.name}</Text>
+          {/* <Text style={styles.email}>
+            {user.email[0]}
+            <Text style={styles.accentEmail} >
+              {search}
+            </Text>
+            {user.email[1]}
+          </Text> */}
+          <Highlighter 
+            highlightStyle={{color: 'red'}}
+            searchWords={[search]}
+            textToHighlight={user.email}
+          />
         </View>
       </View>
     </TouchableNativeFeedback>
@@ -174,5 +186,8 @@ const styles = StyleSheet.create({
     fontSize: 14,
     color: '#555',
     marginTop: 1
+  },
+  accentEmail:{
+    color: 'red'
   }
 })

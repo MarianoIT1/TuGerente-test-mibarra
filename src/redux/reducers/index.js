@@ -120,10 +120,10 @@ export default function reducer(state = initialState, action) {
                 }
             }
         case SEARCH_USER: 
-            console.log(action.payload)
             return {
                 ...state,
-                searchResults: state.users.data.filter(user => user.email.toLowerCase().includes(action.payload))
+                searchResults: state.users.data.filter(user => user.email.includes(action.payload))
+                //.map(user => { return {...user, email: user.email.split(action.payload)} })
             }
         default: return state
     }
