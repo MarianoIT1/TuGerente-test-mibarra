@@ -1,9 +1,11 @@
-import { ScrollView, StyleSheet, Text, TouchableOpacity, View } from 'react-native'
-import {useState} from 'react'
+import { ScrollView, StyleSheet, Text, TouchableOpacity, View, StatusBar } from 'react-native'
+import {useState, useEffect} from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { TextInput } from 'react-native-gesture-handler'
 import UserCard from './UserCard'
-import StatusBar from '../components/StatusBar'
+import Icon from 'react-native-vector-icons/MaterialIcons'
+import IconF from 'react-native-vector-icons/Feather'
+
 import { searchUser } from '../redux/actions'
 
 const SearchOpen = ({setSearchIsOpen, navigation}) => {
@@ -18,25 +20,33 @@ const SearchOpen = ({setSearchIsOpen, navigation}) => {
       dispatch(searchUser(value.toLowerCase()))
     }
 
+    useEffect(() => {
+      StatusBar.setTranslucent(false)
+      StatusBar.setBarStyle('dark-content')
+    }, [navigation])
+
     return (
-      <View style={{...styles.screen, justifyContent: 'flex-start'}}>
-        <StatusBar  backgroundColor="#2EBD6B" barStyle="light-content" />
-        <View style={{flexDirection: 'row'}}>
-          <TouchableOpacity onPress={() => setSearchIsOpen(false)}>
-            <Text>{'<'}</Text>
+      <View style={{...styles.screen}}>
+        <StatusBar barStyle={'dark-content'} translucent={false} />
+        <View style={styles.barWrapper}>
+          <TouchableOpacity style={styles.iconCont} onPress={() => setSearchIsOpen(false)}>
+            <Icon style={styles.icon} name={"arrow-back"} color={"#000"} size={23}/>
           </TouchableOpacity>
-          <TextInput
-            style={styles.input}
-            value={searchInput}
-            onChangeText={handleChanges}
-            keyboardType='email-address'
-            returnKeyType='search'
-            autoFocus={true}
-            autoCapitalize='none'
-            autoCorrect={false}
-            blurOnSubmit={true}
-            placeholder={users.data.length > 0 ? 'Enter a email' : 'Loading..'}
-          />
+          <View style={styles.searchBar}>
+            <IconF style={styles.icon} name={'search'} color={"#888"} size={16} />
+            <TextInput
+              style={styles.input}
+              value={searchInput}
+              onChangeText={handleChanges}
+              keyboardType='email-address'
+              returnKeyType='search'
+              autoFocus={true}
+              autoCapitalize='none'
+              autoCorrect={false}
+              blurOnSubmit={true}
+              placeholder={users.data.length > 0 ? 'Enter a email' : 'Loading..'}
+            />
+          </View>
         </View>
         <ScrollView  style={{width: '100%', height: '100%'}}>
           {
@@ -57,13 +67,26 @@ const styles = StyleSheet.create({
     screen: { 
         flex: 1, 
         alignItems: 'center', 
-        justifyContent: 'center' 
+        justifyContent: 'center',
+        width: '100%' 
       },
-      input: {
-        backgroundColor: 'white',
-        width:'90%',
+      barWrapper: {
+        flexDirection: 'row',
+        height: 55,
+        width: '90%',
+        borderBottomColor: '#ddd',
+        borderBottomWidth: 1,
+        marginBottom: 12,
+        alignItems: 'center'
+      },
+      searchBar: {
+        flex: 1,
+        flexDirection: 'row',
+        height: 36,
         padding: 10,
-        borderRadius: 8,
+        alignItems: 'center',
+        backgroundColor: '#ddd',
+        borderRadius: 8
       },
       userCard: {
         width: '100%',
@@ -74,4 +97,15 @@ const styles = StyleSheet.create({
         textAlign: 'left',
         width: '100%'
       },
+      iconCont: {
+        justifyContent: 'center',
+        alignItems: 'center',
+        alignContent: 'center',
+        width: 'auto',
+        marginRight: 12,
+        height: 55,
+      },
+      input: {
+        marginLeft: 12
+      }
 })
