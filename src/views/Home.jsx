@@ -18,7 +18,6 @@ const Home = ({ navigation }) => {
       ? <SearchOpen setSearchIsOpen={setSearchIsOpen} navigation={navigation} />
       : <SearchClose setSearchIsOpen={setSearchIsOpen} />
  )
-  
 }
 
 export default Home

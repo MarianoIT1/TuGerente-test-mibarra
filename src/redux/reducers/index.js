@@ -9,7 +9,7 @@ import {
     GET_PHOTOS_SUCCESS,
     GET_PHOTOS_FAILED,
     SEARCH_USER,
-  } from "../constants/index";
+  } from "../../constants/index";
 
 const initialState = {
     users: {

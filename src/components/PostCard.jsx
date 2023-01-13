@@ -1,12 +1,10 @@
-import { Image, StyleSheet, Text, TouchableNativeFeedback, View } from 'react-native'
-import {Dimensions} from 'react-native';
+import { Image, StyleSheet, Text, TouchableNativeFeedback, View, Dimensions } from 'react-native'
 
 const screenWidth = Dimensions.get('window').width;
 
 const PostCard = ({post, navigation}) => {
   return (
     <TouchableNativeFeedback 
-      over
       onPress={() => navigation.navigate('Post', {post})}
       background={
         Platform.OS === 'android'
@@ -15,9 +13,15 @@ const PostCard = ({post, navigation}) => {
       }
     >
       <View style={styles.cardWrapper} key={post.id}>
-          <Image style={styles.image} resizeMode='cover' source={{uri: post.thumbnail}} />
+          <Image 
+            style={styles.image} 
+            resizeMode='cover' 
+            source={{uri: post.thumbnail}} 
+          />
           <View style={styles.titleWrapper}>
-            <Text numberOfLines={2} style={styles.title}>{post.title}</Text>
+            <Text numberOfLines={2} style={styles.title}>
+              {post.title}
+            </Text>
           </View>
       </View>
     </TouchableNativeFeedback>

@@ -20,7 +20,9 @@ const SearchClose = ({ setSearchIsOpen }) => {
         >
           <View style={styles.searchBarOpener}>
             <IconF style={styles.icon} name={'search'} color={"#999"} size={16} />
-            <Text style={styles.searchBarOpenerText}>{users.data && users.data.length > 0 ? 'Enter a email' : 'Loading..'}</Text>
+            <Text style={styles.searchBarOpenerText}>
+              {users.data && users.data.length > 0 ? 'Enter a email' : 'Loading..'}
+            </Text>
           </View>
         </TouchableHighlight>
       </View>

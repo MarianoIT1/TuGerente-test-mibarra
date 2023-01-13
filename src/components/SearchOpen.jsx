@@ -1,5 +1,5 @@
-import { ScrollView, StyleSheet, Text, TouchableOpacity, View, StatusBar, TouchableWithoutFeedback, Keyboard, Dimensions } from 'react-native'
-import {useState, useEffect} from 'react'
+import { ScrollView, StyleSheet, Text, TouchableOpacity, View } from 'react-native'
+import { useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { TextInput } from 'react-native-gesture-handler'
 import UserCard from './UserCard'
@@ -48,10 +48,19 @@ const SearchOpen = ({setSearchIsOpen, navigation}) => {
           searchInput.length > 0
             ? searchResults.length > 0
               ? <View style={{flex: 1, width: '100%', height: '100%'}}> 
-                  <Text style={styles.count}>{`${searchResults.length} ${searchResults.length === 1 ? 'result' : 'results'}`}</Text>
-                  <ScrollView keyboardShouldPersistTaps={'always'} style={{width: '100%', height: '100%'}}>
+                  <Text style={styles.count}>
+                    {`${searchResults.length} ${searchResults.length === 1 ? 'result' : 'results'}`}
+                  </Text>
+                  <ScrollView 
+                    keyboardShouldPersistTaps={'always'} 
+                    style={{width: '100%', height: '100%'}}>
                     {searchResults.map(elem => 
-                      <UserCard key={elem.id} user={elem} search={searchInput} navigation={navigation} />
+                      <UserCard 
+                        key={elem.id} 
+                        user={elem} 
+                        search={searchInput} 
+                        navigation={navigation} 
+                      />
                     )}
                   </ScrollView>
                 </View>
@@ -59,7 +68,9 @@ const SearchOpen = ({setSearchIsOpen, navigation}) => {
                   <Text style={styles.msg}>No results :(</Text>
                 </View>
             : <View style={styles.noResults}>
-                <Text style={styles.msg}>Try searching for users by email..</Text>
+                <Text style={styles.msg}>
+                  Try searching for users by email..
+                </Text>
               </View>
           }
       </View>
@@ -69,79 +80,79 @@ const SearchOpen = ({setSearchIsOpen, navigation}) => {
 export default SearchOpen
 
 const styles = StyleSheet.create({
-    screen: { 
-        flex: 1, 
-        alignItems: 'center', 
-        justifyContent: 'center',
-        width: '100%',
-        backgroundColor: '#121212'
-      },
-      noResults: {
-        flex: 1,
-        width: '100%',
-        flexDirection: 'row',
-        alignItems: 'center',
-        paddingHorizontal: 14,
-        borderBottomColor: '#ccc',
-        borderBottomWidth: .5
-      },
-      barWrapper: {
-        flexDirection: 'row',
-        height: 55,
-        width: '90%',
-        borderBottomColor: '#444',
-        borderBottomWidth: 1,
-        marginBottom: 6,
-        alignItems: 'center'
-      },
-      searchBar: {
-        flex: 1,
-        flexDirection: 'row',
-        height: 36,
-        padding: 10,
-        alignItems: 'center',
-        backgroundColor: '#444',
-        borderRadius: 8,
-        fontFamily: 'Montserrat-Medium'
-      },
-      userCard: {
-        width: '100%',
-        paddingHorizontal: 24,
-        paddingVertical: 16
-      },
-      userCardText: {
-        textAlign: 'left',
-        width: '100%'
-      },
-      iconCont: {
-        justifyContent: 'center',
-        alignItems: 'center',
-        alignContent: 'center',
-        width: 'auto',
-        marginRight: 12,
-        height: 55,
-      },
-      input: {
-        marginLeft: 12,
-        color: '#eee',
-        fontFamily: 'Lato-Regular'
-      },
-      msg: {
-        fontFamily: 'Lato-Regular',
-        textAlign: 'center',
-        width: '100%',
-        color: '#aaa',
-        marginBottom: 28
-      },
-      count: {
-        width: '100%',
-        textAlign: 'right',
-        paddingRight: '5%',
-        marginBottom: 6, 
-        fontFamily: 'Lato-Regular',
-        color: '#3cffd0cc',
-        lineHeight: 24,
-        fontSize: 13,
+  screen: { 
+      flex: 1, 
+      alignItems: 'center', 
+      justifyContent: 'center',
+      width: '100%',
+      backgroundColor: '#121212'
+    },
+  noResults: {
+    flex: 1,
+    width: '100%',
+    flexDirection: 'row',
+    alignItems: 'center',
+    paddingHorizontal: 14,
+    borderBottomColor: '#ccc',
+    borderBottomWidth: .5
+  },
+  barWrapper: {
+    flexDirection: 'row',
+    height: 55,
+    width: '90%',
+    borderBottomColor: '#444',
+    borderBottomWidth: 1,
+    marginBottom: 6,
+    alignItems: 'center'
+  },
+  searchBar: {
+    flex: 1,
+    flexDirection: 'row',
+    height: 36,
+    padding: 10,
+    alignItems: 'center',
+    backgroundColor: '#444',
+    borderRadius: 8,
+    fontFamily: 'Lato-Medium'
+  },
+  userCard: {
+    width: '100%',
+    paddingHorizontal: 24,
+    paddingVertical: 16
+  },
+  userCardText: {
+    textAlign: 'left',
+    width: '100%'
+  },
+  iconCont: {
+    justifyContent: 'center',
+    alignItems: 'center',
+    alignContent: 'center',
+    width: 'auto',
+    marginRight: 12,
+    height: 55,
+  },
+  input: {
+    marginLeft: 12,
+    color: '#eee',
+    fontFamily: 'Lato-Regular'
+  },
+  msg: {
+    fontFamily: 'Lato-Regular',
+    textAlign: 'center',
+    width: '100%',
+    color: '#aaa',
+    marginBottom: 28
+  },
+  count: {
+    width: '100%',
+    textAlign: 'right',
+    paddingRight: '5%',
+    marginBottom: 6, 
+    fontFamily: 'Lato-Regular',
+    color: '#3cffd0cc',
+    lineHeight: 24,
+    fontSize: 13,
 
-      }
+  }
 })

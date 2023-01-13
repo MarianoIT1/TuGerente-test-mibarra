@@ -47,7 +47,7 @@ const Post = ({ route, navigation }) => {
         onScroll={handleScroll}
         onDisplay={handleTop}
       >
-        <TriggeringView style={{width: screenWidth, padding: 16, backgroundColor: '#121212'}} >
+        <TriggeringView style={styles.scrollView} >
           <View>
             <Text style={styles.title}>{post.title}</Text>
             <Text style={styles.body}>{post.body.repeat(40)}</Text>
@@ -67,6 +67,11 @@ const styles = StyleSheet.create({
     flex: 1, 
     alignItems: 'center', 
     justifyContent: 'center',
+  },
+  scrollView: {
+    width: screenWidth, 
+    padding: 16, 
+    backgroundColor: '#121212'    
   },
   title: {
     fontSize: 40,
