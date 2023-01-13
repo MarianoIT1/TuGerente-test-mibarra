@@ -4,8 +4,24 @@ const API = 'https://jsonplaceholder.typicode.com'
 
 export default {
   fetchUsers: async () => {
-    const res = await axios(`${API}/users`)
-    return res.data
+    const res = await axios(`${API}/users`).then(res => res.data)
+    const users = res
+                  .map(user => {
+                    return {
+                      ...user, 
+                      email: user.email.toLowerCase()
+                    }
+                  })
+                  .sort(function (a, b) {
+                    if (a.name > b.name) {
+                      return 1;
+                    }
+                    if (a.name < b.name) {
+                      return -1;
+                    }
+                    return 0;
+                  })
+    return users
   },
   fetchPosts: async (id) => {
     const res = await axios(`${API}/posts?userId=${id}`)
@@ -23,7 +39,8 @@ export default {
             try {
               const photo = await axios(`${API}/photos/${post.id}`)
               .then(res => res.data)
-              post.image = photo.thumbnailUrl + '.jpg'
+              post.thumbnail = `http://placehold.jp/${photo.thumbnailUrl.slice(-6)}/ffffff/150.png`
+              post.image = `http://placehold.jp/${photo.thumbnailUrl.slice(-6)}/ffffff/600.png`
               return post
             } catch (error) {
               console.log(error)

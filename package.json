@@ -6,10 +6,10 @@
     "start": "expo start",
     "android": "expo start --android",
     "ios": "expo start --ios",
-    "web": "expo start --web",
-    "postinstall": "rndebugger-open --revert"
+    "web": "expo start --web"
   },
   "dependencies": {
+    "@react-native-seoul/masonry-list": "^1.4.1",
     "@react-navigation/native": "^6.1.2",
     "@react-navigation/native-stack": "^6.9.8",
     "@reduxjs/toolkit": "^1.9.1",
@@ -26,8 +26,7 @@
     "redux": "^4.2.0"
   },
   "devDependencies": {
-    "@babel/core": "^7.12.9",
-    "react-native-debugger-open": "^0.3.25"
+    "@babel/core": "^7.12.9"
   },
   "private": true
 }

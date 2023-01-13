@@ -14,8 +14,9 @@ export default function App() {
   return (
     <Provider store={store}>
       <NavigationContainer>
+      <StatusBar />
         <Stack.Navigator initialRouteName="Home">
-          <Stack.Screen name="Home" component={Home} />
+          <Stack.Screen name="Home" component={Home} options={{headerShown: false}} />
           <Stack.Screen name="User" component={User} />
           <Stack.Screen name="Post" component={Post} />
         </Stack.Navigator>

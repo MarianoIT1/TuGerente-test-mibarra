@@ -1,8 +1,9 @@
-import axios from 'axios'
 import { useEffect, useState } from 'react'
-import { StyleSheet, Text, View, Button, Image } from 'react-native'
+import { StyleSheet, Text, View, FlatList } from 'react-native'
 import { useSelector } from 'react-redux'
 import api from '../api'
+import PostCard from '../components/PostCard'
+import MasonryList from '@react-native-seoul/masonry-list';
 
 const User = ({ route, navigation }) => {
 
@@ -16,25 +17,28 @@ const User = ({ route, navigation }) => {
       .catch(err => setPosts({...posts, loading: false, error: err.message}))
   }, [])
 
+  useEffect(() => {
+    navigation.setOptions({
+      title: user.name
+    })
+  })
+
+
   if(posts.loading) return <Text>Loading..</Text>
   if(posts.error) return <Text>{`Error: ${posts.error}`}</Text>
 
   return (
     <View style={styles.screen}>
-      <Text>{`Name: ${user.name}`}</Text>
-      <View>
-        {
-          
-          posts.data && posts.data.map(post => 
-           { console.log(post.image);
-            return (<View key={post.id}>
-              <Image style={styles.image} resizeMode='cover' source={{uri: post.image}} />
-              <Text>{`Title: ${post.title}`}</Text>
-            </View>)}
-          )
-        }
-      </View>
-
+      
+      <MasonryList 
+        columnWrapperStyle={{justifyContent: 'space-between'}}
+        contentContainerStyle = {{padding: '2%', width: '100%'}}
+        numColumns={2}
+        data={posts.data}
+        ListHeaderComponent={<Text style={styles.subtitle}>POSTS </Text>}
+        ListEmptyComponent={<View style={styles.emptyContainer}><Text style={styles.empty}> Nothing yet.. </Text></View>}
+        renderItem={({item}) => <PostCard navigation={navigation} post={item}/> }
+      />
     </View>
   )
 }
@@ -45,9 +49,24 @@ const styles = StyleSheet.create({
   screen: { 
     flex: 1, 
     alignItems: 'center', 
-    justifyContent: 'center' },
-  image: {
-    width: 50,
-    height: 50
+    justifyContent: 'center'
+  },
+  subtitle: {
+    textAlign: 'left',
+    paddingLeft: 14,
+    marginTop: 16,
+    marginBottom: 8,
+    fontSize: 16,
+    fontWeight: '600',
+  },
+  emptyContainer: {
+    flex: 1,
+    alignItems: 'center',
+    justifyContent: 'center',
+    paddingBottom: 60
+  },
+  empty: {
+    textAlign: 'center'
   }
+  
 })
