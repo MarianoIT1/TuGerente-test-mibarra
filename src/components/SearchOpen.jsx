@@ -20,11 +20,6 @@ const SearchOpen = ({setSearchIsOpen, navigation}) => {
       dispatch(searchUser(value.toLowerCase()))
     }
 
-    useEffect(() => {
-      StatusBar.setTranslucent(false)
-      StatusBar.setBarStyle('dark-content')
-    }, [navigation])
-
     return (
       <View style={{...styles.screen}}>
         <StatusBar barStyle={'light-content'} backgroundColor={'#121212'} translucent={false} />
@@ -53,7 +48,7 @@ const SearchOpen = ({setSearchIsOpen, navigation}) => {
           searchInput.length > 0
             ? searchResults.length > 0
               ? <View style={{flex: 1, width: '100%', height: '100%'}}> 
-                  <Text style={styles.count}>{`${searchResults.length} results`}</Text>
+                  <Text style={styles.count}>{`${searchResults.length} ${searchResults.length === 1 ? 'result' : 'results'}`}</Text>
                   <ScrollView keyboardShouldPersistTaps={'always'} style={{width: '100%', height: '100%'}}>
                     {searchResults.map(elem => 
                       <UserCard key={elem.id} user={elem} search={searchInput} navigation={navigation} />

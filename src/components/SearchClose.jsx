@@ -1,4 +1,4 @@
-import { StyleSheet, Text, View, TouchableOpacity, TouchableHighlight } from 'react-native'
+import { StyleSheet, Text, View, StatusBar, TouchableHighlight } from 'react-native'
 import { useSelector } from 'react-redux'
 import IconF from 'react-native-vector-icons/Feather'
 
@@ -9,7 +9,7 @@ const SearchClose = ({ setSearchIsOpen }) => {
 
   return (
     <View style={styles.screen}>
-
+    <StatusBar barStyle={'light-content'} backgroundColor={'#121212'} translucent={false} />
       <View style={styles.logoWrapper}>
         <Text style={styles.logoHead}>Native Test</Text>
         <Text style={styles.logoSub}>by MARIANO IBARRA</Text>
