@@ -1,4 +1,4 @@
-import { Keyboard, StyleSheet, Text, TouchableNativeFeedback, View } from 'react-native'
+import { Keyboard, StyleSheet, Text, TouchableNativeFeedback, View, Vibration } from 'react-native'
 import Highlighter from '@sanar/react-native-highlight-text';
 import { avatarColors } from '../constants';
 
@@ -8,6 +8,7 @@ const UserCard = ({user, search , navigation}) => {
 
   const handlePress = () => {
     Keyboard.dismiss()
+    Vibration.vibrate(4)
     navigation.navigate('User', {id: user.id})
   }
   

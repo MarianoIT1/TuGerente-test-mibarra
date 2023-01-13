@@ -1,11 +1,14 @@
-import { Image, StyleSheet, Text, TouchableNativeFeedback, View, Dimensions } from 'react-native'
+import { Image, StyleSheet, Text, TouchableNativeFeedback, View, Dimensions, Vibration } from 'react-native'
 
 const screenWidth = Dimensions.get('window').width;
 
 const PostCard = ({post, navigation}) => {
   return (
     <TouchableNativeFeedback 
-      onPress={() => navigation.navigate('Post', {post})}
+      onPress={() => {
+        Vibration.vibrate(4)
+        navigation.navigate('Post', {post})
+      }}
       background={
         Platform.OS === 'android'
           ? TouchableNativeFeedback.Ripple('#03dac519')

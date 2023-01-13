@@ -1,4 +1,4 @@
-import { StyleSheet, Text, View, StatusBar, TouchableHighlight } from 'react-native'
+import { StyleSheet, Text, View, StatusBar, TouchableHighlight, Vibration } from 'react-native'
 import { useSelector } from 'react-redux'
 import IconF from 'react-native-vector-icons/Feather'
 
@@ -6,6 +6,7 @@ import IconF from 'react-native-vector-icons/Feather'
 const SearchClose = ({ setSearchIsOpen }) => {
 
   const users = useSelector(state => state.users)
+
 
   return (
     <View style={styles.screen}>
@@ -16,7 +17,10 @@ const SearchClose = ({ setSearchIsOpen }) => {
       </View>
 
       <View style={{borderRadius: 8, overflow: 'hidden', width: '90%'}}>
-        <TouchableHighlight onPress={() => setSearchIsOpen(true)}
+        <TouchableHighlight 
+          onPressIn={() => Vibration.vibrate(5)}
+          onPressOut={() => Vibration.vibrate(5)}
+          onPress={() => setSearchIsOpen(true)}
         >
           <View style={styles.searchBarOpener}>
             <IconF style={styles.icon} name={'search'} color={"#999"} size={16} />

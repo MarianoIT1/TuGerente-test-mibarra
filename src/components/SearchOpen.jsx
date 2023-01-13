@@ -1,4 +1,4 @@
-import { ScrollView, StyleSheet, Text, TouchableOpacity, View } from 'react-native'
+import { ScrollView, StyleSheet, Text, TouchableOpacity, View, StatusBar, Vibration } from 'react-native'
 import { useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { TextInput } from 'react-native-gesture-handler'
@@ -24,7 +24,7 @@ const SearchOpen = ({setSearchIsOpen, navigation}) => {
       <View style={{...styles.screen}}>
         <StatusBar barStyle={'light-content'} backgroundColor={'#121212'} translucent={false} />
         <View style={styles.barWrapper}>
-          <TouchableOpacity style={styles.iconCont} onPress={() => setSearchIsOpen(false)}>
+          <TouchableOpacity style={styles.iconCont} onPress={() => {Vibration.vibrate(5); setSearchIsOpen(false)}}>
             <Icon style={styles.icon} name={"arrow-back"} color={"#fff"} size={23}/>
           </TouchableOpacity>
           <View style={styles.searchBar}>
@@ -113,7 +113,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     backgroundColor: '#444',
     borderRadius: 8,
-    fontFamily: 'Lato-Medium'
+    fontFamily: 'Lato-Regular'
   },
   userCard: {
     width: '100%',
